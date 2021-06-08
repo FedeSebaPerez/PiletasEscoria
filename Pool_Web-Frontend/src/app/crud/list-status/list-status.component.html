@@ -1,0 +1,28 @@
+  <div class="col-md-6 user-container">
+    <h3 style="margin: auto"> Estados</h3>
+    <button class="btn btn-outline-primary btn-sm" style="width:100px;" (click)="addStatus()"> Agregar</button>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Nombre</th>
+        <th>Color</th>
+        <th>Activo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let status of statuses">
+        <td class="hidden">{{status.idStatus}}</td>
+        <td>{{status.name}}</td>
+        <td><i class="fa fa-square" aria-hidden="true"  [style.color]= "status.color" ></i>
+          
+          </td>
+          <td><div *ngIf="status.active; else elseBlock"><i class="fa fa-thumbs-o-up" aria-hidden="true" style="color:green" ></i></div>
+            <ng-template #elseBlock><i class="fa fa-thumbs-o-down" aria-hidden="true" style="color:red" ></i></ng-template> </td>
+        <td><td>
+          <!--<button class="btn btn-outline-danger btn-sm" (click)="deleteStatus(status.idStatus)"><i class="fa fa-undo" aria-hidden="true" ></i></button>-->
+          <button class="btn btn-outline-success  btn-sm" (click)="editStatus(status.idStatus)" style="margin-left: 20px;">	<i class="fa fa-cog" aria-hidden="true" ></i></button></td>
+       </tr>
+      </tbody>
+    </table>
+  </div>

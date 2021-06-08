@@ -1,0 +1,15 @@
+      <div class="modal-header modal-header-t">
+        <h4 class="modal-title">DETALLE {{pools?.identification}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="poolModal.dismiss('Cerrar')">
+           <i class="fa fa-window-close" style="color: white" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div *ngIf="data?.length">
+            <app-dynamic-form [formData]="data"></app-dynamic-form>
+         </div>
+
+      </div>
+      <div class="modal-footer">
+
+      </div>

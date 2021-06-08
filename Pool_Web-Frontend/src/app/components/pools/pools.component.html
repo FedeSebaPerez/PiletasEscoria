@@ -1,0 +1,82 @@
+<div class="container-fluid">
+        <div class="row text-black">
+          <div class="col-3 bg-dark border"><strong>PILETAS</strong></div>
+          <div class="col-9 bg-dark border text-right" style="float:left;"><div id="mostrar" *ngIf="isLogged"><strong><span class="underLine">Usuario:</span></strong> {{userLoged?.identification}} <a (click)="logout()"><i class="fa fa-sign-out" style="color:#CC0066" aria-hidden="true"></i></a></div></div>
+        </div>
+      </div>
+<div style="width:100%; padding:5px;"></div>
+
+<p></p>
+
+
+<div *ngFor="let pool of pools" class="item" >
+
+        <div class = "poolC" style="overflow: hidden;">       
+                <div *ngIf="!pool.statusD.countDown" class="pool" style="float: left; width: 88%;" (click)="openPoolModal(pool.idPool, isLogged, isAuth)">
+
+                        <div class="top" [ngStyle]="setStyles(pool.statusD.color)">{{pool.identification}} ({{pool.statusD.name}})  </div>
+                        
+                        <ul class="list-group list-group-flush ">
+                                <div  *ngFor="let property of pool.poolStatusP">
+                                        <div *ngIf="property.propertyD!==null && property?.propertyD?.name != 'STATUS_TIME'">
+                                                <li class="list-group-item-transparent d-flex justify-content-between align-items-center">
+                                                        <span class="badge-black badge-pill ">{{ property?.propertyD?.name }} </span>
+                                                        <span class="badge badge-green badge-pill text-right">{{ property.value }}</span>
+                                                </li>
+                                        </div>
+                                </div>
+                        </ul>
+                </div>
+
+                <div *ngIf="pool.statusD.countDown && pool.statusD.animated " class="pool animated" style="float: left; width: 88%;" (click)="openPoolModal(pool.idPool, isLogged, isAuth)">
+
+                        <div  class="top" [ngStyle]="setStyles(pool.statusD.color)">{{pool.identification}} ({{pool.statusD.name}})  
+                                <div style="overflow: hidden;">
+                                        <div style="float: left; ">
+                                                <countdown [config]="{leftTime: pool.statusD?.begin, finishTime: pool.statusD?.end}"></countdown>
+                                        </div>
+                                        <div style="float: left; width: 4%;">&nbsp;</div>
+                                        <div style="float: left; width: 4%;"><i class="fa fa-clock-o" style="color: yellow" aria-hidden="true"></i></div>
+                                        
+                                        <div style="float: left; width:40%" *ngIf="pool.statusD.countDownFinal" >
+                                                &nbsp;        
+                                                <countdown [config]="{template: '$!d!d $!h!:$!m!:$!s!', leftTime: pool.statusD?.beginFinal, finishTime: pool.statusD?.endFinal}"></countdown>
+                                        </div>
+                                </div>
+                        </div>
+                                
+                        <ul class="list-group list-group-flush heigthUl">
+                                <div  *ngFor="let property of pool.poolStatusP">
+                                        <div *ngIf="property.propertyD!==null && property?.propertyD?.name != 'STATUS_TIME'">
+                                                <li class="list-group-item-transparent d-flex justify-content-between align-items-center">
+                                                        <span class="badge-black badge-pill ">{{ property?.propertyD?.name }} </span>
+                                                        <span class="badge badge-green badge-pill text-right">{{ property.value }}</span>
+                                                        
+                                                </li>
+                                        </div>
+                                </div>
+                        </ul>
+                </div>
+                <div *ngIf="pool.statusD.countDown && !pool.statusD.animated" class="pool" style="float: left; width: 88%;" (click)="openPoolModal(pool.idPool, isLogged, isAuth)">
+                        <div class="top" [ngStyle]="setStyles(pool.statusD.color)">{{pool.identification}} ({{pool.statusD.name}})  <div><countdown [config]="{leftTime: pool.statusD?.begin, finishTime: pool.statusD?.end}"></countdown></div></div>
+                                
+                        <ul class="list-group list-group-flush heigthUl">
+                                <div  *ngFor="let property of pool.poolStatusP">
+                                        <div *ngIf="property.propertyD!==null && property?.propertyD?.name != 'STATUS_TIME'">
+                                                <li class="list-group-item-transparent d-flex justify-content-between align-items-center">
+                                                        <span class="badge-black badge-pill ">{{ property?.propertyD?.name }} </span>
+                                                        <span class="badge badge-green badge-pill text-right">{{ property.value }}</span>
+                                                </li>
+                                        </div>
+                                </div>
+                        </ul>
+                </div>
+                <div *ngIf="pool.statusD.warning"  style="float: left; width: 5%;" (click)="openModalInfo(pool.statusD.alert.title,pool.statusD.alert.message)">
+                        &nbsp;
+                        <i class="fa fa-exclamation-triangle" style="size: 25px; color: red" aria-hidden="true"></i>   
+                </div>
+
+        </div> 
+
+</div>
+
