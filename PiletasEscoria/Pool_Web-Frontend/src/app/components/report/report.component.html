@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="row text-black">
+    <div class="col-3 bg-dark border"><strong>REPORTE</strong></div>
+    <div class="col-9 bg-dark border text-right" style="float:left;">
+      <div *ngIf="isLoged"><strong>Usuario:</strong> {{userLoged?.identification}} <a (click)="logout()"><i
+            class="fa fa-sign-out" style="color:#CC0066" aria-hidden="true"></i></a></div>
+    </div>
+  </div>
+</div>
+<div style="width:100%; padding:0px;"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-2">
+      <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+
+        <div>
+
+          <label>Fecha de Inicio</label>
+
+          <input type="date" formControlName="iDate" [ngClass]="{ 'is-invalid': submitted && f.iDate.errors }"
+            [ngModel]="dt | date:'yyyy-MM-dd'" [value]="dt | date:'yyyy-MM-dd'" style="margin:20px" />
+
+          <div *ngIf="submitted && f.iDate.errors" class="invalid-feedback">
+            <div *ngIf="f.iDate.errors.required">Fecha de inicio requerida</div>
+          </div>
+
+          <label>Fecha de Fin</label>
+
+          <input type="date" formControlName="eDate" [ngClass]="{ 'is-invalid': submitted && f.eDate.errors }"
+            [ngModel]="dt | date:'yyyy-MM-dd'" [value]="dt | date:'yyyy-MM-dd'" style="margin:20px" />
+
+          <div *ngIf="submitted && f.eDate.errors" class="invalid-feedback">
+            <div *ngIf="f.eDate.errors.required">Fecha de fin requerida</div>
+          </div>
+
+          <button style="margin:50px"
+            class="ui-button ui-widget ui-state-default ui-button-text-only ui-state-active">Enviar</button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div align="center">
+  <button style="padding:5px;margin:5px" (click)="download()"
+    class="ui-button ui-widget ui-state-default ui-button-text-only ui-state-active">Descargar</button>
+</div>
+
+<div class="col-md-10 offset-md-1">
+  <!-- HEADER -->
+  <mat-grid-list cols="7" padding="100px" rowHeight="30px">
+    <mat-grid-tile [style.background]="'lightgray'">PILETA</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'lightgray'">ESTADO</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'lightgray'">PROPIEDAD</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'lightgray'">VALOR</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'lightgray'">Fecha Ingreso Registro</mat-grid-tile>
+    <mat-grid-tile [style.background]="'lightgray'">Fecha Hora Inicio Estado</mat-grid-tile>
+
+
+    <mat-grid-tile [style.background]="'lightgray'">USUARIO</mat-grid-tile>
+  </mat-grid-list>
+  <!-- DATA -->
+  <mat-grid-list cols="7" padding="100px" rowHeight="30px" *ngFor="let tile of tiles">
+    <mat-grid-tile [style.background]="'white'">{{tile.pool}}</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'white'">{{tile.estado}}</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'white'">{{tile.propiedad}}</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'white'">{{tile.valor}}</mat-grid-tile>
+
+    <mat-grid-tile [style.background]="'white'">{{tile.fecha}}</mat-grid-tile>
+    <mat-grid-tile [style.background]="'white'">{{tile.fechaupdate}}</mat-grid-tile>
+
+
+    <mat-grid-tile [style.background]="'white'">{{tile.usuario}}</mat-grid-tile>
+  </mat-grid-list>
+
+</div>

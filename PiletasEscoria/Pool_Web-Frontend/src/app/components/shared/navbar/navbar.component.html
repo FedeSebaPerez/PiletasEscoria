@@ -1,0 +1,48 @@
+<nav class="navbar navbar-inverse" style="background-color: #CC0066;">
+    <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="exCollapsingNavbar2" 
+    aria-expanded="false" aria-label="Toggle navigation"> 
+    <i class="fa fa-navicon" style="color:white;"></i>
+    </button>
+    <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-toggleable-md" id="exCollapsingNavbar2">    
+      <a class="navbar-brand" href="#">
+        <img src="assets/img/Tenaris-TS.svg" width="100" height="30" alt="">     
+      </a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item" routerLinkActive="active">
+         <a class="nav-link" [routerLink]="['pool']">Piletas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" >
+          <a class="nav-link" [routerLink]="['report']">Reportes de Estados</a>
+        </li> 
+        <li class="nav-item" routerLinkActive="active" >
+          <a class="nav-link" [routerLink]="['reportalert']">Reportes de Alertas</a>
+        </li>
+        <!--
+        <li *ngIf="!isLoged" class="nav-item" routerLinkActive="active">
+            <a class="nav-link" style="cursor: hand;cursor: pointer;" (click)="openFormModal()">Login</a>
+        </li>
+      -->     
+      </ul>
+      <ul *ngIf="true" class="nav navbar-nav"> 
+        <li class="nav-item" routerLinkActive="active">
+         <a class="nav-link" [routerLink]="['list-pool']">Adm. Piletas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['list-status']">Adm. Estados</a>
+         </li>
+         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['list-property']">Adm. Propiedades</a>
+         </li>
+         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['list-p-s-p']">Adm. Prop. Pileta-Estado</a>
+         </li>
+         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['list-user']">Adm. Usuarios</a>
+         </li>
+         <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['list-email']">Adm. Emails</a>
+         </li>
+      </ul>
+    </div>
+  </nav>
+
