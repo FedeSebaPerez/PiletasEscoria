@@ -1,0 +1,57 @@
+<div class="col-md-6 user-container">
+    <h3 style="margin: auto"> Propiedades Pileta-Estado</h3>
+    <div class="form-group">
+    <label for="pools">Piletas</label>
+    </div>
+    <div class="form-group">
+    <select  [(ngModel)]="selectedItem" id="pools" (change)="objChangedP()" >
+      <option [value]="0" >Seleccionar</option>
+      <option *ngFor="let pool of pools" [value]="pool.idPool">
+        {{pool.identification}}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+      <label for="statuses">Estado</label>
+      </div>
+      <div class="form-group">
+      <select  [(ngModel)]="selectedItemS" id="statuses" (change)="objChanged()"  >
+        <option [value]="0" >Seleccionar</option>
+        <option *ngFor="let status of statuses" [value]="status.idStatus">
+          {{status.name}}
+        </option>
+      </select>
+    </div>
+
+
+    <button class="btn btn-outline-primary btn-sm" style="width:100px;" (click)="addElement()"> Agregar</button>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Nombre</th>
+        <th>Valor</th>
+        <th>Activo</th>
+        <th>Cronometro</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let property of properties">
+        <td class="hidden">{{property.idProperty}}</td>
+        <td>{{property.name}}</td>
+        <td>{{property.psValue}}</td>
+        <td>
+        <div *ngIf="property.active; else elseBlock"><i class="fa fa-thumbs-o-up" aria-hidden="true" style="color:green" ></i></div>
+            <ng-template #elseBlock><i class="fa fa-thumbs-o-down" aria-hidden="true" style="color:red" ></i></ng-template>
+        </td>
+        <td>
+        <div *ngIf="property.isCountDown; else elseBlock"><i class="fa fa-thumbs-o-up" aria-hidden="true" style="color:green" ></i></div>
+            <ng-template #elseBlock><i class="fa fa-thumbs-o-down" aria-hidden="true" style="color:red" ></i></ng-template>
+        </td>
+        <td><button  class="btn btn-outline-danger btn-sm" (click)="disableProperty(property.idPool, property.idProperty, property.idStatus)"><i class="fa fa-undo" aria-hidden="true" ></i></button>
+          <button [disabled]="!property.isCountDown" class="btn btn-outline-success  btn-sm" (click)="editProperty(property.idPool, property.idProperty, property.idStatus, property.psValue)" style="margin-left: 20px;">	<i class="fa fa-cog" aria-hidden="true" ></i></button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>

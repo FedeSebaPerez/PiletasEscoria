@@ -1,0 +1,32 @@
+<div class="col-md-6 user-container">
+      <h3 style="margin: auto"> Propiedades</h3>
+      <button class="btn btn-outline-primary btn-sm" style="width:100px;" (click)="addProperty()"> Agregar</button>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let property of properties">
+          <td class="hidden">{{property.idProperty}}</td>
+          <td>{{property.name}}</td>
+          <td>
+          <div *ngIf="property.active; else elseBlock"><i class="fa fa-thumbs-o-up" aria-hidden="true" style="color:green" ></i></div>
+              <ng-template #elseBlock><i class="fa fa-thumbs-o-down" aria-hidden="true" style="color:red" ></i></ng-template>
+          </td>
+          <td>
+           <!-- 
+            <button class="btn btn-outline-danger btn-sm" (click)="deleteProperty(property.idProperty)"><i class="fa fa-undo" aria-hidden="true" ></i></button>
+           -->
+          </td>
+          <td>
+            <button class="btn btn-outline-success  btn-sm" (click)="editProperty(property.idProperty)" >	<i class="fa fa-cog" aria-hidden="true"></i></button>
+          
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>

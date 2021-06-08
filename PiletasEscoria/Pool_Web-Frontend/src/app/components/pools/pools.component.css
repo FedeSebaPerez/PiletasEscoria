@@ -1,0 +1,110 @@
+div.item{
+    width: calc(50% - 3.5em);
+
+    display: inline-block;
+    vertical-align: top;
+}
+@media screen and (max-width: 960px) { /* width at which layout changes  */
+    div.item {
+
+        width: calc(90%);
+        display: inline-block;  
+   }
+ }
+ 
+ @media screen and (max-width: 720px) {
+    div.item {
+
+        width: calc(90%);
+    
+        display: inline-block; 
+   }
+ }
+ 
+ @media print, screen and (max-width: 480px) {
+    div.item {
+
+        width: calc(90%);
+    
+        display: inline-block; 
+   }
+ }
+
+    .animated{
+    background-color: red;
+    animation: parpadeo 2s;
+    -webkit-animation: parpadeo 2s;
+    -moz-animation: parpadeo 2s;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    -moz-animation-iteration-count:infinite;
+    }
+
+    @keyframes parpadeo { 
+    0% {background-color: white}
+    85%{background-color: red} 
+    }
+    
+    @-webkit-keyframes parpadeo { 
+    0% {background-color: white}
+    85%{background-color: red} 
+    }
+
+div.poolC{
+    padding: 0px 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+
+    background-color:#ffffff;
+
+}
+
+div.pool{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border-top-color: black;
+    border-style: solid;
+    border-width: 2px;
+    overflow: hidden;
+    color: black;
+    padding: 0px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+    background-color:#ffffff;
+   
+}
+
+div.pool .top{
+    margin: 0px -20px;
+    padding: 0px 20px;
+   /* background-color:#CC0066;*/
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+
+div.pool .top-gray{
+    margin: 0px -20px;
+    padding: 0px 20px;
+    background-color: gray;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+
+
+.badge-green {
+    background-color: #009900;
+}
+ 
+.underLine {
+    text-decoration: underline;
+  }
+
+.heigthUl {
+    height: 40px;
+}

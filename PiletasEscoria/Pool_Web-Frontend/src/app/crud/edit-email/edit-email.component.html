@@ -1,0 +1,29 @@
+<div class="modal-header modal-header-t">
+        <h4 class="modal-title">Editar EMail</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cerrar')">
+            <i class="fa fa-window-close" style="color: white" aria-hidden="true"></i>
+       </button>
+    </div>
+    
+    <div class="modal-body">
+        <div class="form-group">
+        <label>Email: </label>
+        <input type="text" class="form-control" [(ngModel)]="objeto.emailAddress" required />
+    </div>
+    <div class="form-group">
+        <label>¿Está activo?: </label>
+
+        <div class="form-group">
+            <input style="float:left" type="checkbox" [checked]="objeto.active" [(ngModel)]="objeto.active" name="Activo" />
+        </div>
+       
+    </div>
+	
+	
+        
+    </div>
+    
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="accept()">Editar</button>
+        <button type="button" class="btn btn-primary" (click)="activeModal.dismiss('Cerrar')">Cancelar</button>
+    </div>
